@@ -1,0 +1,22 @@
+# ~/quantWorld/investAssis/docker-compose.yaml
+
+version: '3.8'
+
+services:
+  openclaw:
+    image: openclaw/openclaw:latest
+    container_name: invest-agent-claw
+    ports:
+      - "3000:3000"    # Web Chat UI
+      - "8000:8000"    # API
+    volumes:
+      # ⭐ 挂载自研项目到容器内
+      - ～/quantWorld/investAssis:/app/custom
+
+      # ⭐ 挂载 openclaw 配置目录（可选，方便本地编辑配置）
+      - ~/quantWorld/investAssis.openclaw-config:/root/.openclaw
+    environment:
+      - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
