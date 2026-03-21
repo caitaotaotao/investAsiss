@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.13",
+    "lastTouchedAt": "2026-03-19T12:51:40.334Z"
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "minimax": {
+        "baseUrl": "https://api.minimaxi.com/anthropic",
+        "apiKey": "${MINIMAX_API_KEY}",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "MiniMax-M2.7",
+            "name": "MiniMax M2.7",
+            "reasoning": true
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "research",
+        "name": "research",
+        "workspace": "/app/custom/research-workspace",
+        "agentDir": "/home/node/.openclaw/agents/research/agent",
+        "model": "minimax/MiniMax-M2.7"
+      },
+      {
+        "id": "trading",
+        "name": "trading",
+        "workspace": "/app/custom/trading-workspace",
+        "agentDir": "/home/node/.openclaw/agents/trading/agent",
+        "model": "minimax/MiniMax-M2.7"
+      },
+      {
+        "id": "reflection",
+        "name": "reflection",
+        "workspace": "/app/custom/reflection-workspace",
+        "agentDir": "/home/node/.openclaw/agents/reflection/agent",
+        "model": "minimax/MiniMax-M2.7"
+      },
+      {
+        "id": "supervisor",
+        "name": "supervisor",
+        "workspace": "/app/custom/supervisor-workspace",
+        "agentDir": "/home/node/.openclaw/agents/supervisor/agent",
+        "model": "minimax/MiniMax-M2.7"
+      }
+    ]
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "gateway": {
+    "bind": "lan",
+    "auth": {
+      "mode": "token",
+      "token": "261f6ddee98bd923aace3b73df01eef18a38b65a9a3d6533"
+    }
+  }
+}

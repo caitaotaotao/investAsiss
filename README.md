@@ -2,19 +2,24 @@
 
 ## Agents
 
-1. 研究 research-workspace
+1. 主控Agent supervisor-workspace
+   1. 主要负责对用户输入任务的转发
+   2. 技能
+      - 研究课题任务分拆
+   
+2. 研究 research-workspace
    1. 技能
       - 个股投资逻辑卡片
       - 行业投资逻辑卡片
       - 研究深度评分
       - 核心池维护
-      - 研究课题任务分解
+      - 研究材料搜索
    2. 知识库
       - philosophy.md: 智能体核心约束，他是我们价值观的反映，是对高纬股票市场的一个自我认可的投影面
       - 好的投资机会来源于不断的跟踪，投资逻辑卡片以个股/行业维度持久化保存，方便理解投资逻辑变化
       - AI无法代替研究者的努力，支持人工编辑rationale.md文件
 
-2. 交易 trading-workspace
+3. 交易 trading-workspace
    1. 技能
       - 核心池买卖信号检测
       - 持仓股止盈止损信号检测

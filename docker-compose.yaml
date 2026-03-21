@@ -5,16 +5,19 @@ services:
     image: dr34m/openclaw:latest  # 国内镜像源
     container_name: invest-agent-claw
     ports:
-      - "3000:3000"    # Web Chat UI
-      - "8000:8000"    # API
+      - "18789:18789"  # ⭐ 新增：OpenClaw 默认的 Web UI 端口
+      - "3000:3000"    # 如果你有自定义的UI运行在3000可以保留
+      - "8000:8000"    # 如果有自定义API运行在8000可以保留
     volumes:
-      # ⭐ 挂载自研项目到容器内
       - ~/quantWorld/investAssis:/app/custom
-
-      # ⭐ 挂载 openclaw 配置目录（可选，方便本地编辑配置）
       - ~/quantWorld/investAssis/.openclaw-config:/home/node/.openclaw
     environment:
       - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+      # 强制监听 0.0.0.0
+      - OPENCLAW_GATEWAY_BIND=lan
+      - OPENCLAW_HOST=0.0.0.0
+      - OPENCLAW_BROWSER_HOST=0.0.0.0
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
+
