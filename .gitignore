@@ -26,3 +26,8 @@ __pycache__/
 *.bak
 tmp/
 temp/
+
+# ===========================
+# OpenClaw 工作区
+# ===========================
+.openclaw-config/workspace/
