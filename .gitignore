@@ -12,6 +12,7 @@ __pycache__/
 # 虚拟环境
 # ===========================
 .venv/
+.venv-container/
 
 # ===========================
 # 环境变量 / 敏感信息
@@ -28,6 +29,17 @@ tmp/
 temp/
 
 # ===========================
-# OpenClaw 工作区
+# OpenClaw 运行时文件
 # ===========================
 .openclaw-config/workspace/
+.openclaw-config/agents/*/sessions/
+.openclaw-config/logs/
+.openclaw-config/devices/
+.openclaw-config/identity/
+.openclaw-config/update-check.json
+.openclaw-config/openclaw.json.bak.*
+
+# ===========================
+# macOS
+# ===========================
+.DS_Store

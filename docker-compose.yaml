@@ -13,6 +13,9 @@ services:
       - ~/quantWorld/investAssis/.openclaw-config:/home/node/.openclaw
     environment:
       - MINIMAX_API_KEY=${MINIMAX_API_KEY}
+      - TUSHARE_TOKEN=${TUSHARE_TOKEN}
+      - VIRTUAL_ENV=/app/custom/.venv-container
+      - PATH=/app/custom/.venv-container/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       # 强制监听 0.0.0.0
       - OPENCLAW_GATEWAY_BIND=lan
       - OPENCLAW_HOST=0.0.0.0

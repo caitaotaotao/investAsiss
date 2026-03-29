@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-28T14:34:53.533Z"
+    "lastTouchedAt": "2026-03-29T02:19:41.601Z"
   },
   "models": {
     "mode": "merge",
@@ -64,6 +64,9 @@
   "tools": {
     "sessions": {
       "visibility": "all"
+    },
+    "agentToAgent": {
+      "enabled": true
     }
   },
   "commands": {
