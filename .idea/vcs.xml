@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/reflection-workspace" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/research-workspace" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/supervisor-workspace" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/trading-workspace" vcs="Git" />
   </component>
 </project>

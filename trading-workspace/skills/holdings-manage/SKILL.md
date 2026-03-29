@@ -17,7 +17,7 @@ description: 持仓股票维护。当用户说"更新持仓"、"我买了XX"、"
 
 ## 文件规范
 
-- **路径**：`./holdings/holdings.xlsx`
+- **路径**：`/app/custom/trading-workspace/holdings/holdings.xlsx`
 - **Sheet 名**：`holdings`
 
 ### Columns
@@ -65,7 +65,7 @@ description: 持仓股票维护。当用户说"更新持仓"、"我买了XX"、"
 
 ### 2. 读取现有持仓
 
-读取 `./holdings/holdings.xlsx`。若文件不存在，创建新文件并初始化空表头。
+读取 `/app/custom/trading-workspace/holdings/holdings.xlsx`。若文件不存在，创建新文件并初始化空表头。
 
 ### 3. 执行变更
 
@@ -82,7 +82,7 @@ description: 持仓股票维护。当用户说"更新持仓"、"我买了XX"、"
 
 ### 5. 写入文件
 
-将更新后的 DataFrame 写回 `./holdings/holdings.xlsx`，覆盖 `holdings` sheet。
+将更新后的 DataFrame 写回 `/app/custom/trading-workspace/holdings/holdings.xlsx`，覆盖 `holdings` sheet。
 
 ### 6. 对话确认
 

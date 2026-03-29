@@ -6,10 +6,12 @@ Skills define _how_ tools work. This file records environment-specific paths, fo
 
 ## Data Paths
 
+**重要：所有路径必须使用绝对路径，不要使用 `./` 或 `../` 相对路径（因为通过 session_send 调用时，工作目录可能不是本 workspace）。**
+
 | 用途 | 路径 | 格式 |
 |------|------|------|
-| 当前持仓 | `./holdings/holdings.xlsx` | Excel |
-| 交易日志 | `./trading-logs/trading_log.xlsx` | Excel |
+| 当前持仓 | `/app/custom/trading-workspace/holdings/holdings.xlsx` | Excel |
+| 交易日志 | `/app/custom/trading-workspace/trading-logs/trading_log.xlsx` | Excel |
 
 ## Holdings Excel Schema
 
@@ -75,10 +77,10 @@ Sheet: `log`
 
 | 引用来源 | 路径 | 用途 |
 |---------|------|------|
-| 投资哲学 | `../research-workspace/PHILOSOPHY.md` | 审查与复盘的评价锚点 |
-| 个股逻辑卡片 | `../research-workspace/knowledge/stock-rationale-card/` | 验证交易逻辑有无研究支撑 |
-| 行业逻辑卡片 | `../research-workspace/knowledge/sector-rationale-card/` | 行业周期判断 |
-| 核心池 | `../research-workspace/knowledge/core_stock_pool.xlsx` | 判断标的是否在核心池 |
+| 投资哲学 | `/app/custom/research-workspace/PHILOSOPHY.md` | 审查与复盘的评价锚点 |
+| 个股逻辑卡片 | `/app/custom/research-workspace/knowledge/stock-rationale-card/` | 验证交易逻辑有无研究支撑 |
+| 行业逻辑卡片 | `/app/custom/research-workspace/knowledge/sector-rationale-card/` | 行业周期判断 |
+| 核心池 | `/app/custom/research-workspace/knowledge/core_stock_pool.xlsx` | 判断标的是否在核心池 |
 
 ---
 

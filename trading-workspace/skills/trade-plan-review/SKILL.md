@@ -9,7 +9,7 @@ description: 交易计划审查。当用户说"交易计划"、"我想买/卖XX"
 
 ## 核心约束
 
-- **必须先读** `../research-workspace/PHILOSOPHY.md` — 交易计划的评估必须基于投资哲学框架
+- **必须先读** `/app/custom/research-workspace/PHILOSOPHY.md` — 交易计划的评估必须基于投资哲学框架
 - 审查是**辅助判断**，最终交易决策权在用户手中
 - 不可在用户未明确确认的情况下执行任何记录操作
 
@@ -53,7 +53,7 @@ description: 交易计划审查。当用户说"交易计划"、"我想买/卖XX"
 
 #### 2.2 仓位合理性
 
-- 读取当前持仓（`./holdings/holdings.xlsx`）
+- 读取当前持仓（`/app/custom/trading-workspace/holdings/holdings.xlsx`）
 - 计算该笔交易后的预期持仓权重
 - 单标的权重是否过高（>15% 需提醒，>25% 需警告）
 - 同行业/同主题集中度是否过高
@@ -108,7 +108,7 @@ description: 交易计划审查。当用户说"交易计划"、"我想买/卖XX"
 
 用户回复确认后：
 
-1. **调用 `trading-log` 技能**：将交易计划写入 `./trading-logs/trading_log.xlsx`，状态为 `open`
+1. **调用 `trading-log` 技能**：将交易计划写入 `/app/custom/trading-workspace/trading-logs/trading_log.xlsx`，状态为 `open`
 2. **调用 `holdings-manage` 技能**：更新持仓信息
 3. 在对话中确认记录完成
 

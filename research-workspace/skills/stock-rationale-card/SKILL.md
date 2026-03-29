@@ -13,7 +13,7 @@ description: 个股投资逻辑卡片生成与跟踪复盘。当用户说"分析
 
 ## 文件存储规范
 
-- **目录**：`./knowledge/stock-rationale-card/`
+- **目录**：`/app/custom/research-workspace/knowledge/stock-rationale-card/`（绝对路径，不要使用 `./` 相对路径）
 - **命名**：`{代码}_{交易所小写}.md`（如 `000001_sz.md`、`600519_sh.md`）
 - **格式**：Markdown，纯文本归档
 - **更新时间**：每次更新需在文件头部更新 `updated:` 时间戳
@@ -142,7 +142,7 @@ _本卡片根据PHILOSOPHY.md投资哲学约束生成，维护时需保持与哲
 2. **读取PHILOSOPHY.md** — 确认当前研究的哲学框架
 3. **收集信息** — 按卡片模板6大模块收集数据
 4. **撰写卡片** — 依据PHILOSOPHY.md框架做出投资判断
-5. **输出** — 保存至 `./knowledge/stock-rationale-card/{代码}_{交易所小写}.md`
+5. **输出** — 保存至 `/app/custom/research-workspace/knowledge/stock-rationale-card/{代码}_{交易所小写}.md`
 
 ### 跟踪复盘
 

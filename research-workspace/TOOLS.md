@@ -6,11 +6,13 @@ Skills define _how_ tools work. This file records environment-specific paths, fo
 
 ## Data Paths
 
+**重要：所有路径必须使用绝对路径，不要使用 `./` 相对路径（因为通过 session_send 调用时，工作目录可能不是 research-workspace）。**
+
 | 用途 | 路径 | 格式 |
 |------|------|------|
-| 个股逻辑卡片 | `./knowledge/stock-rationale-card/{代码}_{交易所小写}.md` | Markdown |
-| 行业逻辑卡片 | `./knowledge/sector-rationale-card/{行业名称}.md` | Markdown |
-| 核心池 | `./knowledge/core_stock_pool.xlsx` | Excel |
+| 个股逻辑卡片 | `/app/custom/research-workspace/knowledge/stock-rationale-card/{代码}_{交易所小写}.md` | Markdown |
+| 行业逻辑卡片 | `/app/custom/research-workspace/knowledge/sector-rationale-card/{行业名称}.md` | Markdown |
+| 核心池 | `/app/custom/research-workspace/knowledge/core_stock_pool.xlsx` | Excel |
 
 ## Stock Code Quick Reference
 
@@ -55,9 +57,9 @@ Sheet: `core_stock_pool`
 
 | 引用方向 | 路径 |
 |---------|------|
-| 投资哲学 | `./PHILOSOPHY.md`（本 workspace） |
-| Trading 持仓 | `../trading-workspace/holdings/holdings.xlsx` |
-| Trading 日志 | `../trading-workspace/trading-logs/trading_log.xlsx` |
+| 投资哲学 | `/app/custom/research-workspace/PHILOSOPHY.md` |
+| Trading 持仓 | `/app/custom/trading-workspace/holdings/holdings.xlsx` |
+| Trading 日志 | `/app/custom/trading-workspace/trading-logs/trading_log.xlsx` |
 
 ---
 

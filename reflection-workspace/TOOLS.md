@@ -6,10 +6,12 @@ Skills define _how_ tools work. This file records environment-specific paths, fo
 
 ## Data Paths
 
+**重要：所有路径必须使用绝对路径，不要使用 `./` 或 `../` 相对路径（因为通过 session_send 调用时，工作目录可能不是本 workspace）。**
+
 | 用途 | 路径 | 格式 |
 |------|------|------|
-| 反思案例 | `./lessons/cases/C{YYYYMMDD}{NNN}.md` | Markdown + YAML front matter |
-| 聚合模式 | `./lessons/patterns/P{NNN}_{error_type}.md` | Markdown + YAML front matter |
+| 反思案例 | `/app/custom/reflection-workspace/lessons/cases/C{YYYYMMDD}{NNN}.md` | Markdown + YAML front matter |
+| 聚合模式 | `/app/custom/reflection-workspace/lessons/patterns/P{NNN}_{error_type}.md` | Markdown + YAML front matter |
 
 ## Case File Front Matter Schema
 
@@ -64,8 +66,8 @@ status: pending_review           # pending_review | confirmed | rejected
 
 ## Philosophy Write Safety
 
-1. 单案例 → lessons/cases only
-2. 模式 ≥3 cases → lessons/patterns
+1. 单案例 → 仅写入 `/app/custom/reflection-workspace/lessons/cases/`
+2. 模式 ≥3 cases → 写入 `/app/custom/reflection-workspace/lessons/patterns/`
 3. Strong pattern → 可提议 philosophy 变更
 4. 人工确认 → 写入 PHILOSOPHY.md
 5. 被拒绝 → 标记 rejected，不重复提议
@@ -76,12 +78,12 @@ status: pending_review           # pending_review | confirmed | rejected
 
 | 引用来源 | 路径 | 用途 |
 |---------|------|------|
-| 交易日志 | `../trading-workspace/trading-logs/trading_log.xlsx` | 交易事实（loss-reflect 数据包） |
-| 持仓 | `../trading-workspace/holdings/holdings.xlsx` | 持仓上下文 |
-| 个股逻辑卡片 | `../research-workspace/knowledge/stock-rationale-card/` | 研究基础（loss-reflect 数据包） |
-| 行业逻辑卡片 | `../research-workspace/knowledge/sector-rationale-card/` | 行业逻辑 |
-| 投资哲学 | `../research-workspace/PHILOSOPHY.md` | 哲学锚点 + 变更目标 |
-| 核心池 | `../research-workspace/knowledge/core_stock_pool.xlsx` | 影响评估 |
+| 交易日志 | `/app/custom/trading-workspace/trading-logs/trading_log.xlsx` | 交易事实（loss-reflect 数据包） |
+| 持仓 | `/app/custom/trading-workspace/holdings/holdings.xlsx` | 持仓上下文 |
+| 个股逻辑卡片 | `/app/custom/research-workspace/knowledge/stock-rationale-card/` | 研究基础（loss-reflect 数据包） |
+| 行业逻辑卡片 | `/app/custom/research-workspace/knowledge/sector-rationale-card/` | 行业逻辑 |
+| 投资哲学 | `/app/custom/research-workspace/PHILOSOPHY.md` | 哲学锚点 + 变更目标 |
+| 核心池 | `/app/custom/research-workspace/knowledge/core_stock_pool.xlsx` | 影响评估 |
 
 ---
 

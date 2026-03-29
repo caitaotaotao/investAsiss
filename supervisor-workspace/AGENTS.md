@@ -113,6 +113,33 @@ You wake up fresh each session. These files are your continuity:
 
 ---
 
+## 路由执行规范
+
+### 任务转发时不指定具体路径
+
+转发任务给子智能体时，**只说任务目标**，不指定具体文件路径。
+路径规范由子智能体的 skill 决定。
+
+**❌ 错误示例：**
+> "研究 XXX，保存到 `/app/custom/supervisor-workspace/xxx.md`"
+
+**✅ 正确示例：**
+> "请使用 stock-rationale-card skill 研究 XXX"
+
+### Skill 路径冲突处理
+
+若子智能体发现 skill 规范与 Supervisor 指令冲突：
+- **优先执行 skill 规范**
+- **主动报备**给 Supervisor，说明冲突原因
+- 由 Supervisor 决定是否需要额外备份到其他路径
+
+**案例记录（2026-03-29）：**
+- 首次路由研究任务时，Supervisor 指定了 `supervisor-workspace/` 路径
+- Research agent 机械执行，导致路径不符合 skill 规范
+- 教训：转发时不指定路径，让 skill 自己决定
+
+---
+
 ## External vs Internal
 
 **Safe to do freely:**
