@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T12:51:40.334Z"
+    "lastTouchedAt": "2026-03-19T14:17:53.216Z"
   },
   "models": {
     "mode": "merge",
@@ -21,6 +21,11 @@
     }
   },
   "agents": {
+    "defaults": {
+      "compaction": {
+        "mode": "safeguard"
+      }
+    },
     "list": [
       {
         "id": "main"
@@ -63,6 +68,12 @@
   },
   "gateway": {
     "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789"
+      ]
+    },
     "auth": {
       "mode": "token",
       "token": "261f6ddee98bd923aace3b73df01eef18a38b65a9a3d6533"

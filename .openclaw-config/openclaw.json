@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T14:57:38.606Z"
+    "lastTouchedAt": "2026-03-28T14:34:53.533Z"
   },
   "models": {
     "mode": "merge",
@@ -60,6 +60,11 @@
         "model": "minimax/MiniMax-M2.7"
       }
     ]
+  },
+  "tools": {
+    "sessions": {
+      "visibility": "all"
+    }
   },
   "commands": {
     "native": "auto",

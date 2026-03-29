@@ -75,5 +75,41 @@
     },
     "createdAtMs": 1773931766886,
     "approvedAtMs": 1773931766886
+  },
+  "478cc3013b5e905b5752ac0486dd4c3549d76130e2049301f8a0d0fcee56149e": {
+    "deviceId": "478cc3013b5e905b5752ac0486dd4c3549d76130e2049301f8a0d0fcee56149e",
+    "publicKey": "OU9sYiuAbXH9YKMlbiaqj9MuWhwo1jacq7zNWCZsuGk",
+    "platform": "MacIntel",
+    "clientId": "openclaw-control-ui",
+    "clientMode": "webchat",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "remoteIp": "192.168.65.1",
+    "tokens": {
+      "operator": {
+        "token": "iGr4kMJKrytSuFa9gQhrUUyvX9njTBumw70hKWa1_1A",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing"
+        ],
+        "createdAtMs": 1774707031590
+      }
+    },
+    "createdAtMs": 1774707031590,
+    "approvedAtMs": 1774707031590
   }
 }

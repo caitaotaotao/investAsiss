@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-19T12:09:57.005Z"
+    "lastTouchedAt": "2026-03-19T12:51:40.334Z"
   },
   "models": {
     "mode": "merge",
@@ -45,6 +45,13 @@
         "workspace": "/app/custom/reflection-workspace",
         "agentDir": "/home/node/.openclaw/agents/reflection/agent",
         "model": "minimax/MiniMax-M2.7"
+      },
+      {
+        "id": "supervisor",
+        "name": "supervisor",
+        "workspace": "/app/custom/supervisor-workspace",
+        "agentDir": "/home/node/.openclaw/agents/supervisor/agent",
+        "model": "minimax/MiniMax-M2.7"
       }
     ]
   },
@@ -55,6 +62,7 @@
     "ownerDisplay": "raw"
   },
   "gateway": {
+    "bind": "lan",
     "auth": {
       "mode": "token",
       "token": "261f6ddee98bd923aace3b73df01eef18a38b65a9a3d6533"
