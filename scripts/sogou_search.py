@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-搜狗搜索爬虫 — 为投研深度搜索提供检索能力。
+投研信息检索工具 — 搜狗搜索 + Bocha WebSearch API 双引擎。
 
 功能：
-  search  - 搜索关键词，返回结构化结果列表（标题、URL、摘要）
+  search  - 搜狗搜索关键词，返回结构化结果列表（标题、URL、摘要）
+  bocha   - 通过 Bocha WebSearch API 搜索，结果质量更高（需 BOCHA_API_KEY）
   fetch   - 抓取指定 URL 的正文内容（自动提取可读文本）
 
 用法：
   python scripts/sogou_search.py search "关键词" [--pages 3] [--json]
+  python scripts/sogou_search.py bocha "关键词" [--count 10] [--json]
   python scripts/sogou_search.py fetch "https://example.com/article"
 """
 
 import argparse
 import json
+import os
 import random
 import re
 import sys
@@ -51,6 +54,7 @@ class SearchResult:
     url: str
     snippet: str
     source: str = ""
+    date: str = ""
 
 
 @dataclass
@@ -60,6 +64,7 @@ class SearchResponse:
     total_results: int
     page_count: int
     results: List[SearchResult] = field(default_factory=list)
+    engine: str = "sogou"
 
 
 def _get_session() -> requests.Session:
@@ -185,6 +190,75 @@ def search(query: str, pages: int = 1, resolve_urls: bool = True) -> SearchRespo
     )
 
 
+def bocha_search(query: str, count: int = 10, summary: bool = True) -> SearchResponse:
+    """
+    通过 Bocha WebSearch API 搜索，返回结构化结果。
+
+    当搜狗搜索结果数量或质量不足时，使用此 API 作为补充。
+    需要环境变量 BOCHA_API_KEY。
+
+    Args:
+        query: 搜索关键词
+        count: 返回结果数量（默认 10，最大 50）
+        summary: 是否返回摘要（默认 True）
+    """
+    api_key = os.getenv("BOCHA_API_KEY")
+    if not api_key:
+        print("[ERROR] BOCHA_API_KEY 未配置，请设置环境变量", file=sys.stderr)
+        return SearchResponse(query=query, total_results=0, page_count=0, engine="bocha")
+
+    url_endpoint = "https://api.bocha.cn/v1/web-search"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "query": query,
+        "summary": summary,
+        "count": min(count, 50),
+    }
+
+    try:
+        resp = requests.post(url_endpoint, headers=headers, json=payload, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+    except requests.RequestException as e:
+        print(f"[ERROR] Bocha API 请求失败: {e}", file=sys.stderr)
+        return SearchResponse(query=query, total_results=0, page_count=0, engine="bocha")
+
+    if data.get("code") != 200:
+        print(f"[ERROR] Bocha API 返回错误: {data.get('msg', 'unknown')}", file=sys.stderr)
+        return SearchResponse(query=query, total_results=0, page_count=0, engine="bocha")
+
+    web_pages = data.get("data", {}).get("webPages", {})
+    raw_results = web_pages.get("value", [])
+
+    results: List[SearchResult] = []
+    for i, item in enumerate(raw_results, start=1):
+        date_str = ""
+        if item.get("dateLastCrawled"):
+            date_str = item["dateLastCrawled"][:10]
+
+        source = item.get("siteName", "") or _extract_source_domain(item.get("url", ""))
+
+        results.append(SearchResult(
+            rank=i,
+            title=item.get("name", ""),
+            url=item.get("url", ""),
+            snippet=item.get("snippet", ""),
+            source=source,
+            date=date_str,
+        ))
+
+    return SearchResponse(
+        query=query,
+        total_results=len(results),
+        page_count=1,
+        results=results,
+        engine="bocha",
+    )
+
+
 def fetch_url_content(url: str, max_chars: int = 15000) -> str:
     """
     抓取指定 URL 的页面正文内容。
@@ -250,6 +324,7 @@ def fetch_url_content(url: str, max_chars: int = 15000) -> str:
 def _format_results_text(response: SearchResponse) -> str:
     """将搜索结果格式化为可读文本。"""
     lines = [
+        f"搜索引擎: {response.engine}",
         f"搜索关键词: {response.query}",
         f"结果数量: {response.total_results} 条（共 {response.page_count} 页）",
         "=" * 60,
@@ -258,6 +333,8 @@ def _format_results_text(response: SearchResponse) -> str:
     for r in response.results:
         lines.append(f"\n[{r.rank}] {r.title}")
         lines.append(f"    来源: {r.source}")
+        if r.date:
+            lines.append(f"    日期: {r.date}")
         lines.append(f"    链接: {r.url}")
         if r.snippet:
             lines.append(f"    摘要: {r.snippet}")
@@ -281,6 +358,13 @@ def main():
     search_parser.add_argument("--json", action="store_true", dest="output_json", help="以 JSON 格式输出")
     search_parser.add_argument("--no-resolve", action="store_true", help="不解析搜狗重定向链接（更快）")
 
+    # bocha 子命令
+    bocha_parser = subparsers.add_parser("bocha", help="Bocha WebSearch API 搜索")
+    bocha_parser.add_argument("query", help="搜索关键词")
+    bocha_parser.add_argument("--count", type=int, default=10, help="返回结果数量（默认 10，最大 50）")
+    bocha_parser.add_argument("--json", action="store_true", dest="output_json", help="以 JSON 格式输出")
+    bocha_parser.add_argument("--no-summary", action="store_true", help="不返回摘要")
+
     # fetch 子命令
     fetch_parser = subparsers.add_parser("fetch", help="抓取 URL 正文内容")
     fetch_parser.add_argument("url", help="目标 URL")
@@ -297,6 +381,17 @@ def main():
             query=args.query,
             pages=args.pages,
             resolve_urls=not args.no_resolve,
+        )
+        if args.output_json:
+            print(json.dumps(asdict(response), ensure_ascii=False, indent=2))
+        else:
+            print(_format_results_text(response))
+
+    elif args.command == "bocha":
+        response = bocha_search(
+            query=args.query,
+            count=args.count,
+            summary=not args.no_summary,
         )
         if args.output_json:
             print(json.dumps(asdict(response), ensure_ascii=False, indent=2))

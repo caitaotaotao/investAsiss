@@ -14,8 +14,9 @@ services:
     environment:
       - MINIMAX_API_KEY=${MINIMAX_API_KEY}
       - TUSHARE_TOKEN=${TUSHARE_TOKEN}
-      - VIRTUAL_ENV=/app/custom/.venv-container
-      - PATH=/app/custom/.venv-container/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - BOCHA_API_KEY=${BOCHA_API_KEY}
+      - VIRTUAL_ENV=/app/custom/.venv-container   # docker中的py运行环境挂载至主机模块
+      - PATH=/app/custom/.venv-container/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin  # docker中的py运行环境挂载至主机模块
       # 强制监听 0.0.0.0
       - OPENCLAW_GATEWAY_BIND=lan
       - OPENCLAW_HOST=0.0.0.0
