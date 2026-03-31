@@ -7,4 +7,9 @@ requires-python = ">=3.9"
 dependencies = [
     "pandas>=2.3.3",
     "tushare>=1.4.29",
+    "sqlalchemy>=2.0",
+    "sshtunnel>=0.4",
+    "pymysql>=1.1",
+    "psycopg2-binary>=2.9",
+    "python-dotenv>=1.0",
 ]

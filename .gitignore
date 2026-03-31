@@ -40,6 +40,19 @@ temp/
 .openclaw-config/openclaw.json.bak.*
 
 # ===========================
+# 交易与持仓数据
+# ===========================
+trading-workspace/trading-logs/
+trading-workspace/holdings/
+
+# ===========================
+# 工作区知识库
+# ===========================
+research-workspace/knowledge/
+reflection-workspace/knowledge/
+reflection-workspace/lessons/
+
+# ===========================
 # macOS
 # ===========================
 .DS_Store
