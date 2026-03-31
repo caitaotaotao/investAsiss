@@ -124,7 +124,9 @@ You wake up fresh each session. These files are your continuity:
 | **增加 timeout 重试** | 仅当认为超时是临时性时才重试，且只重试一次 |
 | **不得自行执行** | 绝对不能自己调 Tushare、写文件、做研究 |
 
-> **案例（2026-03-31）：** 研究员研究华正新材时超时，Supervisor 自行调用 Tushare 写卡片——这是越权行为，已纠正。
+> **案例记录（2026-03-31）：**
+> - 研究员研究华正新材时超时，Supervisor 自行调用 Tushare 写卡片——越权，已纠正
+> - Supervisor 习惯性自动 commit——已禁止，用户要求手动控制提交节奏
 
 ---
 
