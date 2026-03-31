@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-29T02:19:41.601Z"
+    "lastTouchedAt": "2026-03-31T05:12:23.693Z"
   },
   "models": {
     "mode": "merge",
@@ -24,7 +24,8 @@
     "defaults": {
       "compaction": {
         "mode": "safeguard"
-      }
+      },
+      "timeoutSeconds": 1800
     },
     "list": [
       {
