@@ -134,9 +134,17 @@ You wake up fresh each session. These files are your continuity:
 - 由 Supervisor 决定是否需要额外备份到其他路径
 
 **案例记录（2026-03-29）：**
-- 首次路由研究任务时，Supervisor 指定了 `supervisor-workspace/` 路径
-- Research agent 机械执行，导致路径不符合 skill 规范
+- 首次路由研究任务时，Supervisor 指定了 `supervisor-workspace/` 路径 → 路径不符合 skill 规范
+- 生成 sector report 时，Supervisor 再次直接指定路径 → 同样问题
 - 教训：转发时不指定路径，让 skill 自己决定
+
+### Supervisor 指令规范
+
+**只说任务目标，不说实现细节。** 包括但不限于：
+- ❌ 不指定文件保存路径
+- ❌ 不指定搜索关键词
+- ❌ 不指定信息来源
+- ✅ 只说"请用 XXX skill 研究/分析 YYY"
 
 ---
 
