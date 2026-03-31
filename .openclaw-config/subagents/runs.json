@@ -59,7 +59,9 @@
       },
       "endedReason": "subagent-complete",
       "frozenResultText": "Now I have all the data I need. Let me compile the research card.",
-      "frozenResultCapturedAt": 1774964880109
+      "frozenResultCapturedAt": 1774964880109,
+      "endedHookEmittedAt": 1774964957826,
+      "cleanupCompletedAt": 1774964957828
     }
   }
 }
