@@ -194,7 +194,7 @@ def bocha_search(query: str, count: int = 10, summary: bool = True) -> SearchRes
     """
     通过 Bocha WebSearch API 搜索，返回结构化结果。
 
-    当搜狗搜索结果数量或质量不足时，使用此 API 作为补充。
+    通用搜索的首选引擎，结果质量显著优于搜狗爬虫，且带时间戳。
     需要环境变量 BOCHA_API_KEY。
 
     Args:
