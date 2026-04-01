@@ -53,6 +53,11 @@ reflection-workspace/knowledge/
 reflection-workspace/lessons/
 
 # ===========================
+# IDE
+# ===========================
+.idea/
+
+# ===========================
 # macOS
 # ===========================
 .DS_Store
