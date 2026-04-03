@@ -303,6 +303,7 @@ pip install requests beautifulsoup4
 3. **标注置信度** — 对每条关键发现标注信息质量等级
 4. **识别信息缺口** — 明确哪些关键问题尚未获得充分信息
 5. **生成结构化输出** — 按标准模板输出搜索结果
+6. **🗜️ 上下文压缩（独立搜索任务时）** — 若本次搜索为独立任务（非 stock-rationale-card/sector-rationale-card 子流程），搜索结果输出后按 AGENTS.md「Session 上下文管理协议」触发 context compaction。若作为卡片建档的子流程运行，由卡片技能在最终步骤统一触发压缩
 
 ---
 

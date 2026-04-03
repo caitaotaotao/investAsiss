@@ -378,6 +378,7 @@ _本卡片根据PHILOSOPHY.md投资哲学约束生成，维护时需保持与哲
 4. **🔖 Checkpoint：写入研究笔记** — 每完成一轮搜索后，将提炼后的关键信息写入 `.scratch/{行业名称}.notes.md` 对应部分（产业链结构、驱动因素、竞争格局、景气数据等），释放 context 压力
 5. **撰写卡片** — 读取笔记文件 `.scratch/{行业名称}.notes.md`，依据PHILOSOPHY.md框架做出行业周期判断，按模板撰写卡片
 6. **输出** — 保存至 `/app/custom/research-workspace/knowledge/sector-rationale-card/{行业名}.md`
+7. **🗜️ 上下文压缩** — 按 AGENTS.md「Session 上下文管理协议」执行：确认卡片和笔记已写入磁盘 → 向用户汇报完成 → 调用 `session_status` 触发 context compaction，释放空间给后续任务
 
 > **关于输出体积**：卡片中的"核心原则"、"说明"等指引文字**禁止出现在输出中**。行业特性景气度模板（6.2 节）中仅输出与目标行业匹配的模板，其余行业模板不出现在输出卡片中。表格中无实际数据的行直接删除。
 
@@ -446,6 +447,7 @@ _本卡片根据PHILOSOPHY.md投资哲学约束生成，维护时需保持与哲
    - 在更新日志追加新条目
    - 补充新数据至对应模块
    - 重新评估周期位置（如有重大变化）
+4. **🗜️ 上下文压缩** — 卡片更新完成后，按 AGENTS.md「Session 上下文管理协议」触发 context compaction
 
 ### 周期判断框架（基于PHILOSOPHY.md）
 
